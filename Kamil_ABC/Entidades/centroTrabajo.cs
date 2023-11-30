@@ -6,11 +6,25 @@ using System.Threading.Tasks;
 
 namespace ProyectoKamil.Entidades
 {
-    internal class centroTrabajo
+    public class CentroTrabajo
     {
-        public string? noCentro { get; set; }
-        public string? nombreCentro { get; set; }
-        public string? ciudad { get; set; }
+        public string? noCentro { get; }
+        public string? nombreCentro { get; }
+        public string? ciudad { get; }
+        public string? unaSolaLinea { get {
+                return string.Format("{0} - {1} de {2}", this.noCentro, this.nombreCentro, this.ciudad);
+            }
+        }
 
+        public CentroTrabajo(string noCentro, string nombreCentro, string ciudad)
+        {
+            this.noCentro = noCentro;
+            this.nombreCentro = nombreCentro;
+            this.ciudad = ciudad;
+        }
+
+        public override string ToString() {
+            return string.Format("{0} - {1} de {2}", this.noCentro, this.nombreCentro, this.ciudad);
+        }
     }
 }

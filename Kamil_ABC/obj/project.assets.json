@@ -476,11 +476,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pepe_\\source\\repos\\Kamil_ABC\\Kamil_ABC\\ProyectoKamil.csproj",
+      "projectUniqueName": "C:\\git\\kami\\Kamil_ABC\\ProyectoKamil.csproj",
       "projectName": "ProyectoKamil",
-      "projectPath": "C:\\Users\\pepe_\\source\\repos\\Kamil_ABC\\Kamil_ABC\\ProyectoKamil.csproj",
+      "projectPath": "C:\\git\\kami\\Kamil_ABC\\ProyectoKamil.csproj",
       "packagesPath": "C:\\Users\\pepe_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pepe_\\source\\repos\\Kamil_ABC\\Kamil_ABC\\obj\\",
+      "outputPath": "C:\\git\\kami\\Kamil_ABC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

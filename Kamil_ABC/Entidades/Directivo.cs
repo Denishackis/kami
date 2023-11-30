@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoKamil.Entidades
 {
-    internal class Directivo : Empleado
+    internal class Directivo
     {
         public string? numCentroSupervisa { get; set; }
         public string? prestaciones { get; set; }

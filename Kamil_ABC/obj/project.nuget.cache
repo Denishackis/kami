@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KXj5hAl3JyLgs8Cxa53a97kZzhFRbnCbUpsMvyjOfzVakdsvxEnrUvwLkjgV2/Bfu0G/bwZXLneRoSztYV6F/g==",
+  "dgSpecHash": "RgLd90TOCPk9VayNVNEc1GCteuSx5e3FT3HVqpchs6BK/VFn61UA3maVsGDDQ3HvWHDIbWJpj63odGdTfu9cag==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pepe_\\source\\repos\\Kamil_ABC\\Kamil_ABC\\ProyectoKamil.csproj",
+  "projectFilePath": "C:\\git\\kami\\Kamil_ABC\\ProyectoKamil.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pepe_\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\pepe_\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

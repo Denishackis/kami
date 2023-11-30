@@ -1,0 +1,6 @@
+C:\Users\pepe_\source\repos\ABC_tarea\ABC_tarea\obj\Debug\net6.0-windows7.0\ABC_tarea.Form1.resources
+C:\Users\pepe_\source\repos\ABC_tarea\ABC_tarea\obj\Debug\net6.0-windows7.0\ProyectoKamil.csproj.GenerateResource.cache
+C:\Users\pepe_\source\repos\ABC_tarea\ABC_tarea\obj\Debug\net6.0-windows7.0\ProyectoKamil.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pepe_\source\repos\ABC_tarea\ABC_tarea\obj\Debug\net6.0-windows7.0\ProyectoKamil.AssemblyInfoInputs.cache
+C:\Users\pepe_\source\repos\ABC_tarea\ABC_tarea\obj\Debug\net6.0-windows7.0\ProyectoKamil.AssemblyInfo.cs
+C:\Users\pepe_\source\repos\ABC_tarea\ABC_tarea\obj\Debug\net6.0-windows7.0\ProyectoKamil.csproj.CoreCompileInputs.cache

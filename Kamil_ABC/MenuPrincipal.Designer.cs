@@ -130,6 +130,7 @@
             btnAltaCentro.TabIndex = 5;
             btnAltaCentro.Text = "Alta";
             btnAltaCentro.UseVisualStyleBackColor = true;
+            btnAltaCentro.Click += btnAltaCentro_Click;
             // 
             // MenuPrincipal
             // 

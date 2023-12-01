@@ -73,3 +73,4 @@ C:\git\kami\Kamil_ABC\obj\Debug\net8.0-windows7.0\ref\ProyectoKamil.dll
 C:\git\kami\Kamil_ABC\obj\Debug\net8.0-windows7.0\ABC_tarea.MenuPrincipal.resources
 C:\git\kami\Kamil_ABC\obj\Debug\net8.0-windows7.0\ProyectoKamil.FrmAltaEmpleados.resources
 C:\git\kami\Kamil_ABC\obj\Debug\net8.0-windows7.0\ProyectoKamil.FrmMuestraEmpleados.resources
+C:\git\kami\Kamil_ABC\obj\Debug\net8.0-windows7.0\ProyectoKamil.FrmAltaCentros.resources

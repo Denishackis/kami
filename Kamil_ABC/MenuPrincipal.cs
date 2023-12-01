@@ -28,5 +28,13 @@ namespace ABC_tarea
                 frmMuestraEmpleado.ShowDialog();
             }
         }
+
+        private void btnAltaCentro_Click(object sender, EventArgs e)
+        {
+            using (FrmAltaCentros frmAltaCentros = new FrmAltaCentros())
+            {
+                frmAltaCentros.ShowDialog();
+            }
+        }
     }
 }

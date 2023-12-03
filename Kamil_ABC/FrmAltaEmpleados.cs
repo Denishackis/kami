@@ -160,7 +160,7 @@ namespace ProyectoKamil
                                                        txtNombre.Text
                                                      , txtApePaterno.Text
                                                      , txtApeMaterno.Text
-                                                     , dtpFechaNacimiento.Value.ToShortDateString()
+                                                     , dtpFechaNacimiento.Value.ToString("yyyy/MM/dd")
                                                      , cbCentro.SelectedValue
                                                      , cbPuesto.SelectedValue
                                                      , 0);

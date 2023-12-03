@@ -164,7 +164,8 @@ namespace ProyectoKamil
                                                      , cbCentro.SelectedValue
                                                      , cbPuesto.SelectedValue
                                                      , 0);
-                }else
+                }
+                else
                 {
                     queryString = string.Format(@"UPDATE cat_empleados SET 
                                                      nom_empleado = '{0}'
@@ -194,6 +195,11 @@ namespace ProyectoKamil
                 else
                 {
                     MessageBox.Show("No se registro el usuario, favor de validar", "Fallo el registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                if (this.empleado != null)
+                {
+                    this.Close();
                 }
             }
         }

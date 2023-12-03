@@ -42,6 +42,11 @@
             cbPuesto = new ComboBox();
             btnGuardar = new Button();
             btnCancelar = new Button();
+            cbCentroSupervisa = new ComboBox();
+            label7 = new Label();
+            rbActivaPagoCombustible = new RadioButton();
+            rbDesactivaPagoCombustible = new RadioButton();
+            label8 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -152,7 +157,7 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(55, 234);
+            btnGuardar.Location = new Point(49, 289);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(173, 43);
             btnGuardar.TabIndex = 12;
@@ -162,7 +167,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(295, 234);
+            btnCancelar.Location = new Point(289, 289);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(173, 43);
             btnCancelar.TabIndex = 13;
@@ -170,11 +175,66 @@
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
             // 
-            // FrmAltaEmpleados
+            // cbCentroSupervisa
+            // 
+            cbCentroSupervisa.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cbCentroSupervisa.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbCentroSupervisa.FormattingEnabled = true;
+            cbCentroSupervisa.Location = new Point(135, 196);
+            cbCentroSupervisa.Name = "cbCentroSupervisa";
+            cbCentroSupervisa.Size = new Size(353, 23);
+            cbCentroSupervisa.TabIndex = 15;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(8, 199);
+            label7.Name = "label7";
+            label7.Size = new Size(121, 15);
+            label7.TabIndex = 14;
+            label7.Text = "Centro que supervisa:";
+            // 
+            // rbActivaPagoCombustible
+            // 
+            rbActivaPagoCombustible.AutoSize = true;
+            rbActivaPagoCombustible.Location = new Point(136, 238);
+            rbActivaPagoCombustible.Name = "rbActivaPagoCombustible";
+            rbActivaPagoCombustible.Size = new Size(92, 19);
+            rbActivaPagoCombustible.TabIndex = 16;
+            rbActivaPagoCombustible.Text = "Activar pago";
+            rbActivaPagoCombustible.UseVisualStyleBackColor = true;
+            // 
+            // rbDesactivaPagoCombustible
+            // 
+            rbDesactivaPagoCombustible.AutoSize = true;
+            rbDesactivaPagoCombustible.Checked = true;
+            rbDesactivaPagoCombustible.Location = new Point(256, 238);
+            rbDesactivaPagoCombustible.Name = "rbDesactivaPagoCombustible";
+            rbDesactivaPagoCombustible.Size = new Size(109, 19);
+            rbDesactivaPagoCombustible.TabIndex = 17;
+            rbDesactivaPagoCombustible.TabStop = true;
+            rbDesactivaPagoCombustible.Text = "Desactivar pago";
+            rbDesactivaPagoCombustible.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(51, 238);
+            label8.Name = "label8";
+            label8.Size = new Size(78, 15);
+            label8.TabIndex = 18;
+            label8.Text = "Combustible:";
+            // 
+            // FrmAltaDirectivos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(500, 289);
+            ClientSize = new Size(500, 348);
+            Controls.Add(label8);
+            Controls.Add(rbDesactivaPagoCombustible);
+            Controls.Add(rbActivaPagoCombustible);
+            Controls.Add(cbCentroSupervisa);
+            Controls.Add(label7);
             Controls.Add(btnCancelar);
             Controls.Add(btnGuardar);
             Controls.Add(cbPuesto);
@@ -190,8 +250,9 @@
             Controls.Add(txtNombre);
             Controls.Add(label1);
             MaximizeBox = false;
-            Name = "FrmAltaEmpleados";
+            Name = "FrmAltaDirectivos";
             Text = "Alta de empleados";
+            Load += FrmAltaDirectivos_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -212,5 +273,10 @@
         private ComboBox cbPuesto;
         private Button btnGuardar;
         private Button btnCancelar;
+        private ComboBox cbCentroSupervisa;
+        private Label label7;
+        private RadioButton rbActivaPagoCombustible;
+        private RadioButton rbDesactivaPagoCombustible;
+        private Label label8;
     }
 }

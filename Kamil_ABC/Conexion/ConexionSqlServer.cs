@@ -41,6 +41,27 @@ namespace ProyectoKamil.Conexion
             return dt;
         }
 
+        public object Consulta(string queryString)
+        {
+            object resultado = null;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand(queryString, conn);
+                try
+                {
+                    conn.Open();
+                    resultado = cmd.ExecuteScalar();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            return resultado;
+        }
+
         public List<CentroTrabajo> ConsultaDatosCentro()
         {
             string queryString = "SELECT num_centro, nom_centro, nom_ciudad FROM cat_centros";
@@ -153,6 +174,93 @@ namespace ProyectoKamil.Conexion
                             Convert.ToDateTime(reader["fec_nacimiento"]),
                             new CentroTrabajo(reader["num_centro"].ToString()!, reader["nom_centro"].ToString()!, reader["nom_ciudad"].ToString()!),
                             new Puesto(reader["num_puesto"].ToString()!, reader["nom_puesto"].ToString()!, reader["des_puesto"].ToString()!)
+                            )
+                        );
+                }
+
+                reader.Close();
+            }
+
+            return list;
+        }
+        public List<Directivo> ConsultaDirectivos()
+        {
+            string queryString = @"SELECT  
+                                     emp.num_empleado
+                                    ,emp.nom_empleado
+                                    ,emp.ape_paterno
+                                    ,emp.ape_materno
+                                    ,emp.fec_nacimiento
+                                    ,emp.num_centro
+                                    ,cen.nom_centro
+                                    ,cen.nom_ciudad
+                                    ,emp.num_puesto
+                                    ,pue.nom_puesto
+                                    ,pue.des_puesto
+                                    ,dir.num_centro_supervisa
+									,dir.recibe_combustible
+                                    FROM cat_empleados emp
+                                    INNER JOIN directivos dir
+                                    ON emp.num_empleado = dir.num_empleado
+                                    INNER JOIN cat_centros cen
+                                    ON emp.num_centro = cen.num_centro
+                                    INNER JOIN cat_puestos pue
+                                    ON emp.num_puesto = pue.num_puesto;";
+
+            List<Directivo> list = new List<Directivo>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    list.Add(
+                        new Directivo(
+                            Convert.ToInt32(reader["num_empleado"]!),
+                            reader["nom_empleado"].ToString()!,
+                            reader["ape_paterno"].ToString()!,
+                            reader["ape_materno"].ToString()!,
+                            Convert.ToDateTime(reader["fec_nacimiento"]),
+                            new CentroTrabajo(reader["num_centro"].ToString()!, reader["nom_centro"].ToString()!, reader["nom_ciudad"].ToString()!),
+                            new Puesto(reader["num_puesto"].ToString()!, reader["nom_puesto"].ToString()!, reader["des_puesto"].ToString()!),
+                            reader["num_centro_supervisa"].ToString()!,
+                            Convert.ToBoolean(reader["recibe_combustible"])!)
+                        );
+                }
+
+                reader.Close();
+            }
+
+            return list;
+        }
+        public List<CentroTrabajo> ConsultaCentros()
+        {
+            string queryString = @"SELECT  
+                                     num_centro
+                                    ,nom_centro
+                                    ,nom_ciudad
+                                    FROM cat_centros;";
+
+            List<CentroTrabajo> list = new List<CentroTrabajo>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    list.Add(
+                        new CentroTrabajo(
+                                reader["num_centro"].ToString()!, 
+                                reader["nom_centro"].ToString()!, 
+                                reader["nom_ciudad"].ToString()!
                             )
                         );
                 }

@@ -50,7 +50,6 @@ C:\git\kami\Kamil_ABC\obj\Debug\net8.0-windows7.0\ProyectoKamil.csproj.AssemblyR
 C:\git\kami\Kamil_ABC\obj\Debug\net8.0-windows7.0\ProyectoKamil.FrmAltaCentros.resources
 C:\git\kami\Kamil_ABC\obj\Debug\net8.0-windows7.0\ProyectoKamil.FrmAltaDirectivos.resources
 C:\git\kami\Kamil_ABC\obj\Debug\net8.0-windows7.0\ProyectoKamil.FrmAltaEmpleados.resources
-C:\git\kami\Kamil_ABC\obj\Debug\net8.0-windows7.0\ProyectoKamil.FrmMuestraEmpleados.resources
 C:\git\kami\Kamil_ABC\obj\Debug\net8.0-windows7.0\ABC_tarea.MenuPrincipal.resources
 C:\git\kami\Kamil_ABC\obj\Debug\net8.0-windows7.0\ProyectoKamil.csproj.GenerateResource.cache
 C:\git\kami\Kamil_ABC\obj\Debug\net8.0-windows7.0\ProyectoKamil.GeneratedMSBuildEditorConfig.editorconfig
@@ -75,3 +74,4 @@ C:\git\kami\Kamil_ABC\obj\Debug\net8.0-windows7.0\refint\ProyectoKamil.dll
 C:\git\kami\Kamil_ABC\obj\Debug\net8.0-windows7.0\ProyectoKamil.pdb
 C:\git\kami\Kamil_ABC\obj\Debug\net8.0-windows7.0\ProyectoKamil.genruntimeconfig.cache
 C:\git\kami\Kamil_ABC\obj\Debug\net8.0-windows7.0\ref\ProyectoKamil.dll
+C:\git\kami\Kamil_ABC\obj\Debug\net8.0-windows7.0\ProyectoKamil.FrmMuestraDatos.resources

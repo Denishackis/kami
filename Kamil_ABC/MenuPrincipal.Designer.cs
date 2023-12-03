@@ -92,6 +92,7 @@
             btnVerDirectivo.TabIndex = 4;
             btnVerDirectivo.Text = "Ver";
             btnVerDirectivo.UseVisualStyleBackColor = true;
+            btnVerDirectivo.Click += btnVerDirectivo_Click;
             // 
             // btnAltaDirectivo
             // 
@@ -101,6 +102,7 @@
             btnAltaDirectivo.TabIndex = 3;
             btnAltaDirectivo.Text = "Alta";
             btnAltaDirectivo.UseVisualStyleBackColor = true;
+            btnAltaDirectivo.Click += btnAltaDirectivo_Click;
             // 
             // gbCentros
             // 
@@ -121,6 +123,7 @@
             btnVerCentro.TabIndex = 6;
             btnVerCentro.Text = "Ver";
             btnVerCentro.UseVisualStyleBackColor = true;
+            btnVerCentro.Click += btnVerCentro_Click;
             // 
             // btnAltaCentro
             // 

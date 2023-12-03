@@ -101,7 +101,7 @@ namespace ProyectoKamil.Conexion
             return list;
         }
 
-        public int guardaDatos(string queryString)
+        public int EjecutaNonQuery(string queryString)
         {
             int registros = -1;
             using (SqlConnection connection = new SqlConnection(connectionString))

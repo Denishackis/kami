@@ -85,7 +85,7 @@ namespace ProyectoKamil
                                                        txtNumeroCentro.Text
                                                      , txtNombreCentro.Text
                                                      , txtNombreCiudad.Text);
-                int registros = conSql.guardaDatos(queryString);
+                int registros = conSql.EjecutaNonQuery(queryString);
 
                 if (registros == 1)
                 {

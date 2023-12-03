@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoKamil.Entidades
 {
-    internal class Puesto
+    public class Puesto
     {
         public string? numeroPuesto { get; set; }
         public string? puesto { get; set; }

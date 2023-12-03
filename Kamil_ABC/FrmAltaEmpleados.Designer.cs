@@ -192,6 +192,7 @@
             MaximizeBox = false;
             Name = "FrmAltaEmpleados";
             Text = "Alta de empleados";
+            Load += FrmAltaEmpleados_Load;
             ResumeLayout(false);
             PerformLayout();
         }

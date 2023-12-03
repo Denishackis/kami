@@ -106,6 +106,7 @@ namespace ProyectoKamil
         {
             if (validaCampos())
             {
+                string queryString = "";
                 List<string> strings = new List<string>();
 
                 strings.Add(string.Format(@"INSERT INTO cat_empleados (
@@ -145,7 +146,8 @@ namespace ProyectoKamil
                                                      , cbCentro.SelectedValue
                                                      , cbPuesto.SelectedValue
                                                      , 1));
-                int registros = conSql.guardaDatos(queryString);
+
+                int registros = conSql.EjecutaNonQuery(queryString);
 
                 if (registros == 1)
                 {

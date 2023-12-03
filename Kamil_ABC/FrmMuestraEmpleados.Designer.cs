@@ -35,8 +35,10 @@
             // 
             // dgvEmpleados
             // 
+            dgvEmpleados.AllowUserToAddRows = false;
+            dgvEmpleados.AllowUserToDeleteRows = false;
             dgvEmpleados.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dgvEmpleados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvEmpleados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dgvEmpleados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEmpleados.Location = new Point(12, 12);
             dgvEmpleados.MultiSelect = false;
@@ -51,15 +53,17 @@
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvEmpleados.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvEmpleados.RowHeadersVisible = false;
             dgvEmpleados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvEmpleados.Size = new Size(730, 258);
+            dgvEmpleados.Size = new Size(730, 259);
             dgvEmpleados.TabIndex = 0;
+            dgvEmpleados.CellClick += dgvEmpleados_CellClick;
             // 
             // FrmMuestraEmpleados
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(754, 282);
+            ClientSize = new Size(754, 285);
             Controls.Add(dgvEmpleados);
             Name = "FrmMuestraEmpleados";
             Text = "Muestra empleados";

@@ -125,6 +125,7 @@
             MaximizeBox = false;
             Name = "FrmAltaCentros";
             Text = "Alta de centros";
+            Load += FrmAltaCentros_Load;
             ResumeLayout(false);
             PerformLayout();
         }

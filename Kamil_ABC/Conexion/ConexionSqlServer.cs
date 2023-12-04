@@ -152,7 +152,8 @@ namespace ProyectoKamil.Conexion
                                     INNER JOIN cat_centros cen
                                     ON emp.num_centro = cen.num_centro
                                     INNER JOIN cat_puestos pue
-                                    ON emp.num_puesto = pue.num_puesto;";
+                                    ON emp.num_puesto = pue.num_puesto
+                                  WHERE emp.es_directivo = 0;";
 
             List<Empleado> list = new List<Empleado>();
 

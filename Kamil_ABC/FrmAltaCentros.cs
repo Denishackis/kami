@@ -1,4 +1,5 @@
 ﻿using ProyectoKamil.Conexion;
+using ProyectoKamil.Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,10 +15,35 @@ namespace ProyectoKamil
     public partial class FrmAltaCentros : Form
     {
         ConexionSqlServer conSql;
+        CentroTrabajo centro;
+        bool estaActualizado = false;
         public FrmAltaCentros()
         {
             InitializeComponent();
+        }
+
+        public FrmAltaCentros(CentroTrabajo centro)
+        {
+            InitializeComponent();
+            this.centro = centro;
+            this.estaActualizado = true;
+        }
+
+        private void FrmAltaCentros_Load(object sender, EventArgs e)
+        {
             conSql = new ConexionSqlServer();
+            CargaDatosCentro();
+        }
+
+        private void CargaDatosCentro()
+        {
+            if (this.centro != null)
+            {
+                this.txtNombreCentro.Text = this.centro.nombreCentro;
+                this.txtNumeroCentro.Text = this.centro.noCentro;
+                this.txtNombreCiudad.Text = this.centro.ciudad;
+                this.txtNumeroCentro.Enabled = false;
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -47,7 +73,7 @@ namespace ProyectoKamil
                 this.txtNombreCiudad.Focus();
                 respuesta = false;
             }
-            
+
 
             return respuesta;
         }
@@ -75,7 +101,10 @@ namespace ProyectoKamil
         {
             if (validaCampos())
             {
-                string queryString = string.Format(@"INSERT INTO cat_centros (
+                string queryString = "";
+                if (!estaActualizado)
+                {
+                    queryString = string.Format(@"INSERT INTO cat_centros (
                                                      num_centro
                                                     ,nom_centro
                                                     ,nom_ciudad) VALUES (
@@ -85,6 +114,17 @@ namespace ProyectoKamil
                                                        txtNumeroCentro.Text
                                                      , txtNombreCentro.Text
                                                      , txtNombreCiudad.Text);
+                }
+                else
+                {
+                    queryString = string.Format(@"UPDATE cat_centros SET
+                                                     nom_centro = '{1}'
+                                                    ,nom_ciudad = '{2}'
+                                                     WHERE num_centro = {0}",
+                                                       txtNumeroCentro.Text
+                                                     , txtNombreCentro.Text
+                                                     , txtNombreCiudad.Text);
+                }
                 int registros = conSql.EjecutaNonQuery(queryString);
 
                 if (registros == 1)
@@ -95,6 +135,11 @@ namespace ProyectoKamil
                 else
                 {
                     MessageBox.Show("No se registro el centro, favor de validar", "Fallo el registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                if (this.centro != null)
+                {
+                    this.Close();
                 }
             }
         }

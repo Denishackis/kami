@@ -67,6 +67,7 @@ namespace ProyectoKamil
             this.dgvEmpleados.Columns.Add("ape_paterno", "Apellido paterno");
             this.dgvEmpleados.Columns.Add("ape_materno", "Apellido materno");
             this.dgvEmpleados.Columns.Add("fec_nacimiento", "Fecha de nacimiento");
+            this.dgvEmpleados.Columns.Add("des_rfc", "RFC");
             this.dgvEmpleados.Columns.Add("num_centro", "Id centro");
             this.dgvEmpleados.Columns.Add("nom_centro", "Centro");
             this.dgvEmpleados.Columns.Add("nom_ciudad", "Ciudad");
@@ -105,6 +106,7 @@ namespace ProyectoKamil
                                 emp.apellidoP,
                                 emp.apellidoM,
                                 Convert.ToDateTime(emp.fechaNacimiento).ToShortDateString(),
+                                emp.RFC,
                                 emp.centroTrabajo!.noCentro,
                                 emp.centroTrabajo.nombreCentro,
                                 emp.centroTrabajo.ciudad,
@@ -126,6 +128,7 @@ namespace ProyectoKamil
                                 emp.apellidoP,
                                 emp.apellidoM,
                                 Convert.ToDateTime(emp.fechaNacimiento).ToShortDateString(),
+                                emp.RFC,
                                 emp.centroTrabajo!.noCentro,
                                 emp.centroTrabajo.nombreCentro,
                                 emp.centroTrabajo.ciudad,
@@ -207,6 +210,14 @@ namespace ProyectoKamil
                         }
                         break;
                     case EnumOpciones.Centros:
+                        using (FrmAltaCentros frmAltaCentros = new FrmAltaCentros(
+                        new CentroTrabajo(
+                                        this.dgvEmpleados.Rows[e.RowIndex].Cells["num_centro"].Value.ToString(),
+                                        this.dgvEmpleados.Rows[e.RowIndex].Cells["nom_centro"].Value.ToString(),
+                                        this.dgvEmpleados.Rows[e.RowIndex].Cells["nom_ciudad"].Value.ToString())))
+                        {
+                            frmAltaCentros.ShowDialog();
+                        }
                         break;
                 }
 
@@ -216,19 +227,60 @@ namespace ProyectoKamil
             }
             else if (e.ColumnIndex == dgvEmpleados.Columns["GridBtnEliminar"].Index)
             {
-                if(MessageBox.Show(string.Format("Estas apunto de eliminar el registro del empleado #{0} - {1}.\n¿estas seguro?", this.dgvEmpleados.Rows[e.RowIndex].Cells["num_empleado"].Value, this.dgvEmpleados.Rows[e.RowIndex].Cells["nom_empleado"].Value.ToString())
-                    ,"Dar de baja empleado",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+                switch (opcionMenu)
                 {
-                    if(conSql.EjecutaNonQuery(string.Format("DELETE FROM cat_empleados WHERE num_empleado = {0}", this.dgvEmpleados.Rows[e.RowIndex].Cells["num_empleado"].Value)) == 1)
-                    {
-                        MessageBox.Show("Empleado dado de baja con exito","Existoso",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                        this.dgvEmpleados.Rows.Clear();
-                        LlenaRegistrosGrid();
-                    }else
-                    {
-                        MessageBox.Show("Ocurrio un error al intentar dar de baja al empleado", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    
+                    case EnumOpciones.Empleados:
+                        if (MessageBox.Show(string.Format("Estas apunto de eliminar el registro del empleado #{0} - {1}.\n¿estas seguro?", this.dgvEmpleados.Rows[e.RowIndex].Cells["num_empleado"].Value, this.dgvEmpleados.Rows[e.RowIndex].Cells["nom_empleado"].Value.ToString())
+                    , "Dar de baja empleado", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            if (conSql.EjecutaNonQuery(string.Format("DELETE FROM cat_empleados WHERE num_empleado = {0}", this.dgvEmpleados.Rows[e.RowIndex].Cells["num_empleado"].Value)) == 1)
+                            {
+                                MessageBox.Show("Empleado dado de baja con exito", "Existoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.dgvEmpleados.Rows.Clear();
+                                LlenaRegistrosGrid();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ocurrio un error al intentar dar de baja al empleado", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        break;
+                    case EnumOpciones.Directivos:
+                        if (MessageBox.Show(string.Format("Estas apunto de eliminar el registro del directivo #{0} - {1} por lo que pasará a ser empleado.\n¿estas seguro?", this.dgvEmpleados.Rows[e.RowIndex].Cells["num_empleado"].Value, this.dgvEmpleados.Rows[e.RowIndex].Cells["nom_empleado"].Value.ToString())
+                    , "Dar de baja empleado", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            if (conSql.EjecutaNonQuery(string.Format("DELETE FROM directivos WHERE num_empleado = {0}", this.dgvEmpleados.Rows[e.RowIndex].Cells["num_empleado"].Value)) == 1)
+                                if (conSql.EjecutaNonQuery(string.Format("UPDATE cat_empleados SET es_directivo = 0 WHERE num_empleado = {0}", this.dgvEmpleados.Rows[e.RowIndex].Cells["num_empleado"].Value)) == 1)
+                                {
+                                    MessageBox.Show("Empleado dado de baja con exito", "Existoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    this.dgvEmpleados.Rows.Clear();
+                                    LlenaRegistrosGrid();
+                                }else
+                                {
+                                    MessageBox.Show("Ocurrio un error al intentar desmarcar como directivo al empleado", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ocurrio un error al intentar dar de baja al empleado", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        break;
+                    case EnumOpciones.Centros:
+                        if (MessageBox.Show(string.Format("Estas apunto de eliminar el registro del centro #{0} - {1}.\n¿estas seguro?", this.dgvEmpleados.Rows[e.RowIndex].Cells["num_centro"].Value, this.dgvEmpleados.Rows[e.RowIndex].Cells["nom_centro"].Value.ToString())
+                    , "Dar de baja centro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            if (conSql.EjecutaNonQuery(string.Format("DELETE FROM cat_centros WHERE num_centro = {0}", this.dgvEmpleados.Rows[e.RowIndex].Cells["num_centro"].Value)) == 1)
+                            {
+                                MessageBox.Show("Centro dado de baja con exito", "Existoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.dgvEmpleados.Rows.Clear();
+                                LlenaRegistrosGrid();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ocurrio un error al intentar dar de baja al empleado", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        break;
                 }
             }
 
